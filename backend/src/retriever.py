@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 import google.genai as genai
 
-from src.config import CHUNKS_PATH, EMBEDDINGS_PATH, TOP_K
+from backend.src.config import CHUNKS_PATH, EMBEDDINGS_PATH, TOP_K
 
 
 @dataclass

@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-from src.config import (
+from backend.src.config import (
     CHUNK_OVERLAP,
     CHUNK_SIZE,
     CHUNKS_PATH,
@@ -25,8 +25,8 @@ from src.config import (
     INDEX_DIR,
     MAX_PAGES,
 )
-from src.config import DEFAULT_USER_AGENT
-from src.utils import clean_text, split_text
+from backend.src.config import DEFAULT_USER_AGENT
+from backend.src.utils import clean_text, split_text
 
 
 def fetch_urls_from_sitemap(sitemap_url: str, timeout: int = 25) -> List[str]:

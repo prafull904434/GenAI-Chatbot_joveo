@@ -3,7 +3,7 @@ import time
 from functools import lru_cache
 from typing import Dict, List, Optional
 
-from src.retriever import RetrievedChunk
+from backend.src.retriever import RetrievedChunk
 
 try:
     import google.genai as genai 

@@ -3,8 +3,8 @@ from functools import lru_cache
 from backend.schemas.chat import ChatRequest, ChatResponse, Source
 from backend.core.guardrails import guardrail
 
-from src.llm import generate_answer
-from src.retriever import EmbeddingRetriever
+from backend.src.llm import generate_answer
+from backend.src.retriever import EmbeddingRetriever
 
 
 def build_fallback_answer(question: str, chunks, exc: Exception | None = None) -> str:
