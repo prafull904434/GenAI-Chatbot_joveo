@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.api.routes import router
 from backend.core.config import load_environment
 
-load_environment() # load environment variables before app startup
+load_environment()
 
 app = FastAPI(
     title="GitLab GenAI Chatbot API",
@@ -19,5 +19,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# register all API routes
+
 app.include_router(router)
