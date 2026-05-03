@@ -1,0 +1,16 @@
+requests
+beautifulsoup4
+lxml
+scikit-learn
+scipy
+numpy
+pandas
+google-generativeai
+google-genai
+tqdm
+python-dotenv
+fastapi
+uvicorn[standard]
+pytest
+pytest-asyncio
+httpx
