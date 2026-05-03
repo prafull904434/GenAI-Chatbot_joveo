@@ -121,11 +121,3 @@ Open the URL from terminal (usually `http://127.0.0.1:5173`).
 3. Set `VITE_API_BASE_URL` in Vercel to deployed backend URL.
 4. Set `GEMINI_API_KEY` on backend platform secrets.
 
-### Alternative: Hugging Face Spaces
-- Host full stack with Docker/Spaces and expose API + UI.
-
-## 6) Notes for Evaluation
-- React frontend gives a cleaner product feel and stronger UX marks.
-- Source citations improve trust and transparency.
-- Modular codebase supports maintainability and extension.
-- Write-up is provided in `PROJECT_WRITEUP.md`.
