@@ -25,7 +25,12 @@ ALLOWED_ORIGINS = [
     "http://localhost:5174",
     "http://127.0.0.1:5173",
     "http://127.0.0.1:5174",
+<<<<<<< HEAD
     "https://gen-ai-chatbot-joveo.vercel.app"
+=======
+    "https://genai-chatbot-joveo.vercel.app",
+    "https://gen-ai-chatbot-joveo-g4wda988v-prafull-singhs-projects-a78482a6.vercel.app"
+>>>>>>> 91ab2ac (allow Vercel URL in CORS)
 ]
 
 app.add_middleware(
