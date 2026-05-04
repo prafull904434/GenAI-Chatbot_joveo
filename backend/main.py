@@ -1,16 +1,15 @@
 import os
 import sys
 
+# Ensure the root project directory is in the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.api.routes import router
 from backend.core.config import load_environment
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-if parent_dir not in sys.path:
-    sys.path.insert(0, parent_dir)
 
 load_environment()
 
@@ -28,6 +27,7 @@ app.add_middleware(
 )
 
 app.include_router(router)
+
 
 @app.get("/")
 def root():
