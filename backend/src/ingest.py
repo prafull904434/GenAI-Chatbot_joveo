@@ -1,5 +1,12 @@
 import argparse
 import os
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(os.path.dirname(current_dir))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+
 import time
 from io import StringIO
 from typing import Iterable, List
@@ -163,6 +170,21 @@ def build_index(df: pd.DataFrame) -> None:
     if not api_key:
         raise RuntimeError("Missing GEMINI_API_KEY for embedding.")
 
+    # Quick connectivity check before starting embedding
+    print("Checking connectivity to Google API...")
+    try:
+        test = requests.get(
+            "https://generativelanguage.googleapis.com",
+            timeout=10,
+            headers={"User-Agent": DEFAULT_USER_AGENT},
+        )
+    except Exception:
+        raise RuntimeError(
+            "Cannot reach Google's API (generativelanguage.googleapis.com).\n"
+            "Your network is blocking it. Switch to a mobile hotspot and try again."
+        )
+    print("Connectivity OK. Starting embedding generation...")
+
     contents = df["content"].tolist()
     all_embeddings = []
 
@@ -185,7 +207,7 @@ def build_index(df: pd.DataFrame) -> None:
         }
 
         for attempt in range(10):
-            response = requests.post(endpoint, json=payload)
+            response = requests.post(endpoint, json=payload, timeout=30)
 
             if response.status_code == 200:
                 data = response.json()
