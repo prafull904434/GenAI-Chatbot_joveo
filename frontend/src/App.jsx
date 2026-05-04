@@ -1,6 +1,6 @@
 import { useMemo, useState, useRef, useEffect } from "react";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/+$/, "");
 
 /*  Message Component */
 function Message({ msg }) {
@@ -95,6 +95,10 @@ function App() {
     );
 
     const fetchResponse = async () => {
+      if (!API_BASE) {
+        return { error: "missing frontend env: VITE_API_BASE_URL" };
+      }
+
       const res = await fetch(`${API_BASE}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

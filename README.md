@@ -115,9 +115,13 @@ Open the URL from terminal (usually `http://127.0.0.1:5173`).
 
 ## 5) Deployment
 
-### Recommended: Vercel (Frontend) + Render/Railway (Backend)
-1. Deploy `backend.py` FastAPI app on Render/Railway.
-2. Deploy `frontend` on Vercel.
-3. Set `VITE_API_BASE_URL` in Vercel to deployed backend URL.
-4. Set `GEMINI_API_KEY` on backend platform secrets.
+### Recommended: Vercel (Frontend) + Render (Backend)
+1. Deploy this repo on Render using `render.yaml` (it runs `backend.main:app`).
+2. In Render environment variables, set:
+   - `GEMINI_API_KEY`
+   - Optional tuning vars: `MAX_PAGES`, `CHUNK_SIZE`, `CHUNK_OVERLAP`, `TOP_K`
+3. Deploy the `frontend` folder on Vercel.
+4. In Vercel project environment variables, set:
+   - `VITE_API_BASE_URL=https://<your-render-service>.onrender.com`
+5. Redeploy frontend after setting `VITE_API_BASE_URL`.
 
